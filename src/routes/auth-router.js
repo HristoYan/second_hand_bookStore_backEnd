@@ -45,37 +45,4 @@ router.post('/api/login', async (req, res) => {
 
 });
 
-// router.post('/api/register', async (req, res) => {
-//     const user = req.body;
-//     try {
-//         await indicative.validator.validate(user, {
-//             firstName: 'required|string|min:2',
-//             lastName: 'required|string|min:2',
-//             username: 'required|email',
-//             password: 'required|string|min:6',
-//             imageUrl: 'url'
-//         });
-//         user.role = 'Author';
-//         const salt = bcrypt.genSaltSync(10);
-//         user.password = bcrypt.hashSync(user.password, salt);
-//         try {
-//             const r = await req.app.locals.db.collection('users').insertOne(user);
-//             if (r.result.ok && r.insertedCount === 1) {
-//                 delete user._id;
-//                 user.id = r.insertedId;
-//                 console.log(`Unable to update post: ${user.id}: ${user.firstName} ${user.lastName}`);
-//                 res.status(201).location(`/users/${user.id}`).json(user);
-//             } else {
-//                 sendErrorResponse(req, res, 500, `Unable to create user: ${user.id}: ${user.firstName} ${user.lastName}`);
-//             }
-//         } catch (err) {
-//             console.log(`Unable to create user: ${user.id}: ${user.firstName} ${user.lastName}`);
-//             console.error(err);
-//             sendErrorResponse(req, res, 500, `Unable to create user: ${user.id}: ${user.firstName} ${user.lastName}`, err);
-//         }
-//     } catch (errors) {
-//         sendErrorResponse(req, res, 400, `Invalid user data: ${errors.message}`, errors);
-//     }
-// });
-
 module.exports = router;
